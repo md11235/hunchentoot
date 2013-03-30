@@ -323,7 +323,7 @@ and see what's happening.")
   (let* ((path (get-parameter "path"))
          (file-info (and path
                          (find path *tmp-test-files*
-                               :key 'second :test 'equal))))
+                               :key 'car :test 'pathname-match-p))))
     (unless file-info
       (setf (return-code*) +http-not-found+)
       (return-from send-file))
